@@ -1,8 +1,15 @@
 # Academic and Industry Portfolio Template
 
+https://shreyanmitra.github.io/academic-and-industry-portfolio-template/
+
 A customizable Jekyll portfolio for researchers, academics, and industry professionals. Present your publications, projects, work experience, teaching, and writing in one place.
 
 Built on [Academic Pages](https://github.com/academicpages/academicpages.github.io) and [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes), with a modern portfolio interface and classic layouts available alongside it.
+
+<img width="1777" height="897" alt="image" src="https://github.com/user-attachments/assets/ed1c0763-e649-49de-8237-ab7ac797127b" />
+<img width="1700" height="880" alt="image" src="https://github.com/user-attachments/assets/e42ae246-0717-4994-b574-eb0121964061" />
+
+
 
 ## Features
 
