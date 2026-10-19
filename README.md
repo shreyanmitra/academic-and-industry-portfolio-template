@@ -71,6 +71,10 @@ If you choose a branch-based deployment instead, configure both `url` and `baseu
 
 ## Edit with Portfolio Studio
 
+![Portfolio Studio dashboard showing sample portfolio content, editing sections, and site health](docs/images/portfolio-studio.png)
+
+*Portfolio Studio with fictional sample content; the folder path is abbreviated.*
+
 The `editor/` folder contains a local editing app. On Windows, install Python 3.10+ and double-click `editor/portfolio-studio.cmd`. On macOS/Linux, follow the [editor setup guide](editor/README.md). It opens this repository by default.
 
 Studio edits content, settings, skills, navigation, media, and selected shared templates. Saves include a difference preview and restore history; private backups stay outside the repository. The editor is excluded from GitHub Pages output. Use Jekyll to preview the final website, then commit and publish through your usual workflow.
