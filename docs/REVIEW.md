@@ -8,7 +8,7 @@ Install the dependencies with `bundle install`, then run:
 
 ```sh
 bundle exec ruby tests/source_contract.rb
-bundle exec jekyll build --destination _site-root
+bundle exec jekyll build --baseurl=/ --destination _site-root
 bundle exec ruby scripts/verify.rb _site-root
 bundle exec jekyll build --baseurl /academic-and-industry-portfolio-template --destination _site-project
 bundle exec ruby scripts/verify.rb _site-project /academic-and-industry-portfolio-template

@@ -3,7 +3,8 @@ title: Your Name
 title_separator: ·
 description: A research and software portfolio.
 url: https://example.com
-baseurl: ''
+# Project-site default; use '' for USERNAME.github.io or a custom domain.
+baseurl: /academic-and-industry-portfolio-template
 repository: ''
 locale: en-US
 timezone: Etc/UTC

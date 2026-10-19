@@ -52,6 +52,15 @@ Set `demo: false` in `_data/portfolio.yml` when your content is ready. Choose `s
 
 The Pages workflow uses the address configured in GitHub Pages when building deployment links. Keep `_config.yml` accurate for local previews and other hosts. Configure custom domains in GitHub Pages settings.
 
+The default `baseurl` is `/academic-and-industry-portfolio-template`. Change it to match your repository name, or set it to `""` for a personal-site repository or custom domain.
+
+### Links open another site or miss the repository path
+
+A link such as `/projects/` goes to the account's root website. For a project site it must include the repository prefix, such as `/academic-and-industry-portfolio-template/projects/`. Confirm that **Settings → Pages → Source** is **GitHub Actions**, then run **Deploy GitHub Pages** from the Actions tab. A successful built-in **pages build and deployment** run does not establish that the custom workflow ran.
+
+If you choose a branch-based deployment instead, configure both `url` and `baseurl` explicitly before publishing. The custom workflow's automatic address configuration applies only when that workflow builds the site.
+
+
 ## Preview locally
 
 Install Ruby 3.3+ and Bundler. Windows users can follow [Jekyll's installation guide](https://jekyllrb.com/docs/installation/windows/).
@@ -61,7 +70,7 @@ bundle install
 bundle exec jekyll serve --host 127.0.0.1
 ```
 
-Open `http://127.0.0.1:4000`. Restart Jekyll after editing `_config.yml`. Node.js and Python are not required for a normal site build.
+Open `http://127.0.0.1:4000/academic-and-industry-portfolio-template/` with the default configuration. If you change `baseurl`, use that path instead. Restart Jekyll after editing `_config.yml`. Node.js and Python are not required for a normal site build.
 
 Alternatively, with Docker installed:
 

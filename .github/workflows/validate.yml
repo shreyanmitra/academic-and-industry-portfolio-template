@@ -17,7 +17,7 @@ jobs:
         run: bundle exec ruby tests/source_contract.rb
       - name: Check root deployment
         run: |
-          bundle exec jekyll build --destination _site-root
+          bundle exec jekyll build --baseurl=/ --destination _site-root
           bundle exec ruby scripts/verify.rb _site-root
       - name: Check project deployment
         run: |
