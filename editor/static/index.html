@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#22143d">
+  <title>Portfolio Studio</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">PS</div>
+        <div><strong>Portfolio Studio</strong><span id="site-name">Opening portfolio…</span></div>
+      </div>
+      <nav id="primary-nav" aria-label="Portfolio sections"></nav>
+      <div class="sidebar-foot">
+        <span class="connection-dot" aria-hidden="true"></span>
+        <span>Local and private</span>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation">☰</button>
+        <div class="path-wrap">
+          <span class="eyebrow">Website folder</span>
+          <span id="site-path" class="site-path"></span>
+        </div>
+        <div class="top-actions">
+          <button class="quiet-button" id="refresh-button">Refresh</button>
+          <button class="primary-button" id="new-button">New entry</button>
+        </div>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <div class="loading-state">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Reading your portfolio…</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="review-dialog" class="review-dialog">
+    <form method="dialog" class="dialog-head">
+      <div><span class="eyebrow">Safety review</span><h2>Review this change</h2></div>
+      <button class="icon-button" value="cancel" aria-label="Close review">×</button>
+    </form>
+    <div class="review-summary" id="review-summary"></div>
+    <pre class="diff-view" id="diff-view"></pre>
+    <div class="dialog-actions">
+      <button class="quiet-button" id="cancel-review">Keep editing</button>
+      <button class="primary-button" id="confirm-save">Save change</button>
+    </div>
+  </dialog>
+
+  <dialog id="create-dialog" class="create-dialog">
+    <form id="create-form">
+      <div class="dialog-head">
+        <div><span class="eyebrow">New portfolio content</span><h2>Create an entry</h2></div>
+        <button type="button" class="icon-button" data-close-create aria-label="Close">×</button>
+      </div>
+      <div class="form-grid two-column">
+        <label><span>Section</span><select id="create-group" required></select></label>
+        <label><span>File name</span><input id="create-filename" required placeholder="my-new-project.md"></label>
+        <label class="wide"><span>Title</span><input id="create-title" required placeholder="A clear public title"></label>
+        <label class="wide"><span>Page address</span><input id="create-permalink" placeholder="/projects/my-new-project/"></label>
+        <label class="wide"><span>Opening content</span><textarea id="create-body" rows="7" placeholder="Write the first paragraph…"></textarea></label>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="quiet-button" data-close-create>Cancel</button>
+        <button type="submit" class="primary-button">Review new entry</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script>window.__PORTFOLIO_STUDIO_TOKEN__ = __STUDIO_SESSION_TOKEN__;</script>
+  <script src="/app.js" defer></script>
+</body>
+</html>

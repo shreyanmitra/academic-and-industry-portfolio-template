@@ -19,6 +19,7 @@ Built on [Academic Pages](https://github.com/academicpages/academicpages.github.
 - Blog posts, drafts, categories, tags, pagination, and RSS.
 - MathJax equations, Mermaid diagrams, Plotly charts, and an optional talk map.
 - Classic Academic Pages layouts, author sidebars, galleries, and table-of-contents helpers.
+- Bundled Portfolio Studio editor with save previews and restoration history.
 - GitHub Pages deployment, automated validation, and optional Docker development.
 
 The engine and content live together in your repository. No submodule or editing service is required. Sample content is fictional; replace it before publishing your own portfolio.
@@ -67,6 +68,12 @@ A link such as `/projects/` goes to the account's root website. For a project si
 
 If you choose a branch-based deployment instead, configure both `url` and `baseurl` explicitly before publishing. The custom workflow's automatic address configuration applies only when that workflow builds the site.
 
+
+## Edit with Portfolio Studio
+
+The `editor/` folder contains a local editing app. On Windows, install Python 3.10+ and double-click `editor/portfolio-studio.cmd`. On macOS/Linux, follow the [editor setup guide](editor/README.md). It opens this repository by default.
+
+Studio edits content, settings, skills, navigation, media, and selected shared templates. Saves include a difference preview and restore history; private backups stay outside the repository. The editor is excluded from GitHub Pages output. Use Jekyll to preview the final website, then commit and publish through your usual workflow.
 
 ## Preview locally
 

@@ -64,7 +64,7 @@ end
 %w[assets/css/portfolio.css assets/js/portfolio.js images/portrait.svg images/favicon.svg feed.xml sitemap.xml].each do |name|
   check.call(File.file?(File.join(output, name)), "Required output absent: #{name}")
 end
-%w[README.md LICENSE NOTICE.md Gemfile Gemfile.lock package.json package-lock.json scripts docs tests .git .github].each do |name|
+%w[README.md LICENSE NOTICE.md Gemfile Gemfile.lock package.json package-lock.json scripts docs tests editor .git .github].each do |name|
   check.call(!File.exist?(File.join(output, name)), "Development file exposed: #{name}")
 end
 puts "Checked #{checks} conditions across #{html_files.size} HTML pages at #{base.empty? ? '/' : base + '/'}"

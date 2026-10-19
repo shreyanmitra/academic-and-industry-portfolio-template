@@ -18,7 +18,7 @@ The template is a normal Jekyll repository with its engine included. A site crea
 | Colors and visual styling | `assets/css/portfolio.css` |
 | Shared page shell | `_layouts/portfolio.html` |
 
-Edit Markdown, YAML, and JSON with your preferred text editor. Preview with Jekyll to render Liquid templates and confirm the final layout. If you use a separate content editor, keep its private history and backups outside the public site repository.
+Use the bundled [Portfolio Studio editor](../editor/README.md), or edit Markdown, YAML, and JSON with your preferred text editor. Preview with Jekyll to render Liquid templates and confirm the final layout. If you use a separate content editor, keep its private history and backups outside the public site repository.
 
 ## Upgrading an existing portfolio
 
