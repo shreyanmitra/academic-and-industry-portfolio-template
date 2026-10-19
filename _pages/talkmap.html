@@ -1,0 +1,13 @@
+---
+layout: portfolio-detail
+title: Talk map
+permalink: /talkmap.html
+talkmap: true
+---
+{% assign generated_map = site.static_files | where: 'path', '/talkmap/map.html' | first %}
+{% if generated_map %}
+<iframe title="Map of talk locations" src="{{ '/talkmap/map.html' | relative_url }}" width="100%" height="600" loading="lazy"></iframe>
+{% else %}
+{% include portfolio-talkmap.html %}
+<p>The map appears when talk records have latitude and longitude values. The inherited optional geocoding tool can also generate a standalone map here.</p>
+{% endif %}

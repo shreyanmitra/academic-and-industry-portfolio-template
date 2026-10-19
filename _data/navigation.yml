@@ -1,0 +1,25 @@
+# A link needs a title and a url or homepage section. Dividers need neither.
+main:
+  - title: Research
+    section: research
+  - title: Publications
+    section: publications
+  - title: Projects
+    section: projects
+  - title: Experience
+    section: experience
+    url: /experience/
+  - title: Teaching
+    section: teaching
+  - title: About
+    section: about
+  - divider: true
+  - title: Talks
+    section: talks
+    url: /talks/
+  - title: Leadership
+    section: leadership
+    url: /leadership/
+  - title: Contact
+    section: contact
+    style: button

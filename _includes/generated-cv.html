@@ -1,0 +1,4 @@
+<p>{{ site.author.name | escape }}{% if site.author.employer %} · {{ site.author.employer | escape }}{% endif %}</p>
+{% if site.data.portfolio_skills.degrees.size > 0 %}<h2>Education</h2><ul>{% for degree in site.data.portfolio_skills.degrees %}<li>{{ degree | escape }}</li>{% endfor %}</ul>{% endif %}
+{% assign cv_collections = 'experience,publications,talks,teaching,leadership,projects,portfolio' | split: ',' %}
+{% for label in cv_collections %}{% assign entries = site[label] | sort: 'date' | reverse %}{% if entries.size > 0 %}<h2>{{ label | capitalize }}</h2><ul>{% for item in entries %}<li><strong><a href="{{ item.url | relative_url }}">{{ item.title }}</a></strong>{% if item.date %} · {{ item.date | date: '%Y' }}{% endif %}{% if item.venue %} · {{ item.venue | escape }}{% endif %}{% if item.citation %}<p>{{ item.citation }}</p>{% elsif item.summary %}<p>{{ item.summary | escape }}</p>{% endif %}</li>{% endfor %}</ul>{% endif %}{% endfor %}

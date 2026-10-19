@@ -1,0 +1,11 @@
+{% assign item = include.item %}
+{% assign card_icon = item.icon | default: item.header.teaser %}
+<article class="work-card splat{% if card_icon %} has-icon{% endif %}" data-category="{{ item.portfolio_category | escape }}" style="--order: {{ include.index | default: 0 }}">
+  {% if item.featured %}<span class="featured-label">Featured</span>{% endif %}
+  <div class="card-top"><span class="mono">{% if include.index %}0{{ include.index | plus: 1 }}{% else %}{{ item.date | date: '%Y' }}{% endif %}</span><span class="tag">{{ item.portfolio_category | default: item.collection }}</span><span class="card-arrow" aria-hidden="true">{% include portfolio-icon.html name='external' %}</span></div>
+  {% if card_icon %}<span class="card-icon"><img src="{% include portfolio-image-url.html src=card_icon %}" alt="" width="56" height="56" loading="lazy" decoding="async"></span>{% endif %}
+  <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+  <p>{{ item.summary | default: item.content | split: '<br>' | first | strip_html | strip }}</p>
+  {% if item.tags.size > 0 %}<div class="tags">{% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>{% endif %}
+  <a class="text-link card-link" href="{{ item.url | relative_url }}">Explore {{ item.collection | replace: 'projects', 'project' | replace: 'leadership', 'role' }} {% include portfolio-icon.html name='arrow' %}</a>
+</article>

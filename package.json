@@ -1,0 +1,17 @@
+{
+  "name": "academic-and-industry-portfolio-template-checks",
+  "private": true,
+  "description": "Optional browser checks; not required for the Jekyll build",
+  "scripts": {
+    "test:browser": "node tests/browser.cjs",
+    "test:features": "node tests/features-browser.cjs",
+    "build:js": "uglifyjs node_modules/jquery/dist/jquery.min.js assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js",
+    "watch:js": "onchange \"assets/js/**/*.js\" -e \"assets/js/main.min.js\" -- npm run build:js"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "jquery": "^3.7.1",
+    "uglify-js": "^3.19.3",
+    "onchange": "^7.1.0"
+  }
+}

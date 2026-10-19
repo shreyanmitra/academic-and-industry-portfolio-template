@@ -1,0 +1,36 @@
+{
+  "basics": {
+    "name": "Your Name",
+    "label": "Researcher · Software developer",
+    "summary": "Fictional CV example. Replace with your own details."
+  },
+  "education": [
+    {
+      "institution": "Example Institution",
+      "area": "Example field",
+      "studyType": "Example degree"
+    }
+  ],
+  "work": [
+    {
+      "name": "Example Organization",
+      "position": "Example role",
+      "summary": "Describe your responsibilities and results."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Example skills",
+      "keywords": [
+        "Research",
+        "Writing"
+      ]
+    }
+  ],
+  "publications": [],
+  "awards": [],
+  "volunteer": [],
+  "languages": [],
+  "interests": [],
+  "references": []
+}

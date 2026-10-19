@@ -1,0 +1,34 @@
+{
+  "groups": [
+    {
+      "name": "Research",
+      "skills": [
+        "Research methods",
+        "Data analysis",
+        "Technical writing"
+      ]
+    },
+    {
+      "name": "Software",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "Git"
+      ]
+    },
+    {
+      "name": "Collaboration",
+      "skills": [
+        "Teaching",
+        "Documentation",
+        "Project planning"
+      ]
+    }
+  ],
+  "languages": [
+    "Example language \u2014 add your own"
+  ],
+  "degrees": [
+    "Example degree \u2014 add your own"
+  ]
+}

@@ -1,0 +1,23 @@
+---
+layout: portfolio
+---
+{% assign section = page.collection | default: page.section %}
+{% assign section_path = '/' | append: section | append: '/' %}
+{% if section == 'posts' %}{% assign section_path = '/year-archive/' %}{% endif %}
+<header class="page-hero"><div class="container">
+  <a class="back-link" href="{% if section == 'about' %}{{ '/' | relative_url }}#about{% elsif section %}{{ section_path | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">← Back{% if section == 'about' %} to overview{% elsif section %} to {{ section }}{% endif %}</a>
+  {% assign hero_icon = page.icon | default: page.header.teaser %}
+  {% if hero_icon %}<span class="card-icon hero-item"><img src="{% include portfolio-image-url.html src=hero_icon %}" alt="" width="56" height="56" decoding="async"></span>{% endif %}
+  <h1 class="hero-item">{{ page.title }}</h1>
+  {% unless page.kicker == false %}<p class="section-label">{{ page.kicker | default: page.portfolio_category | default: section | default: 'Portfolio' }}</p>{% endunless %}
+  {% if page.date %}<p class="mono hero-item"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %d, %Y' }}</time>{% if page.venue %} · {{ page.venue }}{% endif %}{% if page.location %} · {{ page.location }}{% endif %}</p>{% endif %}
+  {% if page.modified %}<p class="mono">Updated {{ page.modified | date: '%B %d, %Y' }}</p>{% endif %}
+  {% if page.read_time %}<p class="mono">{% include read-time.html %}</p>{% endif %}
+</div></header>
+<div class="container detail-container"><article class="prose{% unless page.collection == 'publications' %} detail-panel{% endunless %}">{{ content }}{% if page.citation %}<h2>Recommended citation</h2><p>{{ page.citation }}</p>{% endif %}{% if page.link %}<p><a href="{% include portfolio-resource-url.html url=page.link %}">Direct link ↗</a></p>{% endif %}{% if page.slidesurl %}<p><a href="{% include portfolio-resource-url.html url=page.slidesurl %}">Download slides ↗</a></p>{% endif %}{% if page.bibtexurl %}<p><a href="{% include portfolio-resource-url.html url=page.bibtexurl %}">Download BibTeX ↗</a></p>{% endif %}</article>
+  {% if page.paperurl or page.codeurl %}<div class="resource-links detail-resources">{% if page.paperurl %}<a class="button" href="{% include portfolio-resource-url.html url=page.paperurl %}">Read paper ↗</a>{% endif %}{% if page.codeurl %}<a class="button button-outline" href="{% include portfolio-resource-url.html url=page.codeurl %}">View code ↗</a>{% endif %}</div>{% endif %}
+  {% if page.collection %}<nav class="detail-next" aria-label="More {{ page.collection }}"><span class="eyebrow">Explore more {{ page.collection }}</span>{% for related in site[page.collection] %}{% unless related.url == page.url %}<a href="{{ related.url | relative_url }}">{{ related.title }} <span aria-hidden="true">↗</span></a>{% endunless %}{% endfor %}</nav>{% endif %}
+  {% if site.comments.provider and page.comments %}{% include comments.html %}{% endif %}
+  {% if page.share %}{% include portfolio-share.html %}{% endif %}
+  {% if page.related and site.related_posts.size > 0 %}<nav class="detail-next" aria-label="Related posts"><span class="eyebrow">You may also enjoy</span>{% for related in site.related_posts limit:4 %}{% unless related.url == page.url %}<a href="{{ related.url | relative_url }}">{{ related.title }} {% include portfolio-icon.html name='external' %}</a>{% endunless %}{% endfor %}</nav>{% endif %}
+</div>

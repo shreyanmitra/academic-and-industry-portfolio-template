@@ -1,0 +1,1 @@
+{%- assign value = include.url | strip -%}{%- if value contains '://' or value contains 'mailto:' -%}{{ value }}{%- else -%}{{ value | relative_url }}{%- endif -%}

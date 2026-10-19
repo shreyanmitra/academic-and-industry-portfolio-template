@@ -1,0 +1,8 @@
+---
+layout: archive
+title: "Classic portfolio"
+permalink: /portfolio/
+author_profile: true
+---
+<p>These entries use the inherited portfolio collection. <a href="{{ '/projects/' | relative_url }}">Redesigned projects</a> remain available.</p>
+{% for post in site.portfolio %}{% include archive-single.html %}{% else %}<p>No portfolio entries yet.</p>{% endfor %}

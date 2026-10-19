@@ -1,0 +1,53 @@
+{%- comment -%}
+Renders a publication detail body from front matter. Every panel is optional;
+omit the corresponding front matter key to drop it. See docs/publication-schema.md.
+{%- endcomment -%}
+{%- assign pub = include.page | default: page -%}
+{%- assign glance = pub.glance -%}
+{%- assign preview = pub.preview -%}
+{%- assign history = pub.history -%}
+{%- if glance -%}
+<div class="legacy-panel">
+<h2>At a Glance</h2>
+<b>Publication Venue</b>{% if glance.venue_tags %}{% for tag in glance.venue_tags %} <span class="tag">{{ tag }}</span>{% endfor %}{% else %} <span class="tag">-</span>{% endif %}<br>
+<b>Publication Status</b> <span class="tag">{{ glance.status }}</span><br>
+{% if glance.part_of %}<b>Part of</b>{% for tag in glance.part_of %} <span class="tag">{{ tag }}</span>{% endfor %}<br>{% endif %}
+<b>Topic</b>{% for tag in glance.topic %} <span class="tag">{{ tag }}</span>{% endfor %}<br>
+{% if glance.associated_with %}<b>Associated With</b>{% for org in glance.associated_with %} {% if org.url %}<a class="resource-link" href="{% include portfolio-resource-url.html url=org.url %}">{% if org.logo %}<img class="resource-logo" src="{% include portfolio-image-url.html src=org.logo %}" alt=""> {% endif %}{{ org.name }}</a>{% else %}<span class="tag">{{ org.name }}</span>{% endif %}{% endfor %}<br>{% endif %}
+<b>Versions</b> <span class="tag">{{ glance.versions }}</span><br>
+<b>Code?</b> <span class="tag">{{ glance.has_code }}</span><br>
+<b>Dataset?</b> <span class="tag">{{ glance.has_dataset }}</span><br>
+<b>Separate Papers for Code and Dataset?</b> <span class="tag">{{ glance.separate_papers }}</span>
+</div>
+{%- endif -%}
+{%- if pub.quick_access -%}
+<div class="legacy-panel">
+<h2>Quick Access Buttons</h2>
+<i>For latest versions only</i>
+<div class="resource-links">{% for resource in pub.quick_access %}{% if resource.url %}<a class="resource-link" href="{% include portfolio-resource-url.html url=resource.url %}">{{ resource.label }}</a>{% else %}<span class="resource-unavailable" title="No resource link is available">{{ resource.label }}</span>{% endif %}{% endfor %}</div>
+</div>
+{%- endif -%}
+{%- if preview -%}
+<div class="legacy-panel">
+<h2>Paper Preview</h2>
+<b>Excerpt</b>
+{% if preview.excerpt_note %}<p>{{ preview.excerpt_note }}</p>{% endif %}
+{% if preview.excerpt %}<blockquote>{{ preview.excerpt }}</blockquote>{% endif %}
+<b>Citation</b>
+{% if preview.citation_note %}<p>{{ preview.citation_note }}</p>{% endif %}
+{% if preview.citation %}<blockquote>{{ preview.citation }}</blockquote>{% endif %}
+{% if preview.code %}<b>Code</b>
+<div class="resource-links">{% for resource in preview.code %}{% if resource.url %}<a class="resource-link" href="{% include portfolio-resource-url.html url=resource.url %}">{{ resource.label }}</a>{% else %}<span class="resource-unavailable" title="No resource link is available">{{ resource.label }}</span>{% endif %}{% endfor %}</div>{% endif %}
+{% if preview.datasets %}<b>Dataset</b>
+<div class="resource-links">{% for resource in preview.datasets %}{% if resource.url %}<a class="resource-link" href="{% include portfolio-resource-url.html url=resource.url %}">{{ resource.label }}</a>{% else %}<span class="resource-unavailable" title="No resource link is available">{{ resource.label }}</span>{% endif %}{% endfor %}</div>{% endif %}
+</div>
+{%- endif -%}
+{%- if history -%}
+<div class="legacy-panel">
+<h2>History</h2>
+<b>Previous Published Versions of This Paper</b>
+{% if history.versions %}<ol>{% for version in history.versions %}<li>{{ version }}</li>{% endfor %}</ol>{% else %}<p><i>No previous versions found</i></p>{% endif %}
+{% if history.archived_code %}<b>Archived Code</b>
+<div class="resource-links">{% for resource in history.archived_code %}{% if resource.url %}<a class="resource-link" href="{% include portfolio-resource-url.html url=resource.url %}">{{ resource.label }}</a>{% else %}<span class="resource-unavailable" title="No resource link is available">{{ resource.label }}</span>{% endif %}{% endfor %}</div>{% endif %}
+</div>
+{%- endif -%}

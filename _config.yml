@@ -1,0 +1,251 @@
+# Identity and optional services are neutral; see docs/FEATURE-PARITY.md.
+title: Your Name
+title_separator: ·
+description: A research and software portfolio.
+url: https://example.com
+baseurl: ''
+repository: ''
+locale: en-US
+timezone: Etc/UTC
+author:
+  name: Your Name
+  avatar: portrait.svg
+  pronouns: null
+  bio: Add a short introduction to your work and interests.
+  location: null
+  employer: null
+  uri: null
+  email: null
+  github: null
+  linkedin: null
+  googlescholar: null
+  arxiv: null
+  orcid: null
+  academia: null
+  inspire-hep: null
+  impactstory: null
+  semantic: null
+  ssrn: null
+  pubmed: null
+  researchgate: null
+  scopus: null
+  zotero: null
+  bitbucket: null
+  codepen: null
+  dribbble: null
+  kaggle: null
+  stackoverflow: null
+  artstation: null
+  bluesky: null
+  facebook: null
+  flickr: null
+  foursquare: null
+  goodreads: null
+  google_plus: null
+  keybase: null
+  instagram: null
+  lastfm: null
+  mastodon: null
+  medium: null
+  pinterest: null
+  soundcloud: null
+  steam: null
+  telegram: null
+  tumblr: null
+  twitter: null
+  vine: null
+  weibo: null
+  wikipedia: null
+  xing: null
+  youtube: null
+  zhihu: null
+words_per_minute: 160
+future: false
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+permalink: /:categories/:title/
+include:
+- _pages
+exclude:
+- README.md
+- LICENSE
+- NOTICE.md
+- Gemfile
+- Gemfile.lock
+- docs
+- scripts
+- tests
+- vendor
+- local
+- node_modules
+- package.json
+- package-lock.json
+- .bundle
+- .github
+- .gitignore
+- .gitattributes
+- DESIGN.md
+- PRODUCT.md
+- CHANGELOG.md
+- markdown_generator
+- talkmap.py
+- talkmap.ipynb
+- talkmap_out.ipynb
+- Dockerfile
+- docker-compose.yaml
+- _config_docker.yml
+- .devcontainer
+- requirements-tools.txt
+- .dockerignore
+- assets/js/_main.js
+- assets/js/theme.js
+- assets/js/plugins
+plugins:
+- jekyll-feed
+- jekyll-sitemap
+- jekyll-redirect-from
+- jekyll-paginate
+- jekyll-gist
+- jemoji
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+  publications:
+    output: true
+    permalink: /publications/:path/
+  experience:
+    output: true
+    permalink: /experience/:path/
+  teaching:
+    output: true
+    permalink: /teaching/:path/
+  leadership:
+    output: true
+    permalink: /leadership/:path/
+  talks:
+    output: true
+    permalink: /talks/:path/
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
+defaults:
+- scope:
+    path: ''
+  values:
+    layout: portfolio-detail
+    author_profile: false
+- scope:
+    path: ''
+    type: publications
+  values:
+    share: true
+- scope:
+    path: ''
+    type: posts
+  values:
+    layout: single
+    author_profile: true
+    read_time: true
+    comments: true
+    share: true
+    related: true
+- scope:
+    path: ''
+    type: portfolio
+  values:
+    layout: single
+    author_profile: true
+    share: true
+publication_category:
+  books:
+    title: Books
+  manuscripts:
+    title: Journal Articles
+  conferences:
+    title: Conference Papers
+comments:
+  provider: null
+  disqus:
+    shortname: null
+  discourse:
+    server: null
+  facebook:
+    appid: null
+    num_posts: null
+    colorscheme: null
+staticman:
+  allowedFields:
+  - name
+  - email
+  - url
+  - message
+  branch: main
+  commitMessage: New comment.
+  filename: comment-{@timestamp}
+  format: yml
+  moderation: true
+  path: _data/comments/{options.slug}
+  requiredFields:
+  - name
+  - email
+  - message
+  transforms:
+    email: md5
+  generatedFields:
+    date:
+      type: date
+      options:
+        format: iso8601
+atom_feed:
+  hide: false
+  path: null
+twitter:
+  username: null
+facebook:
+  username: null
+  app_id: null
+  publisher: null
+social:
+  type: null
+  name: null
+  links: null
+analytics:
+  provider: null
+  google:
+    tracking_id: null
+google_site_verification: null
+bing_site_verification: null
+alexa_site_verification: null
+yandex_site_verification: null
+breadcrumbs: false
+read_more: disabled
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+site_theme: default
+appearance:
+  default: dark
+  toggle: true
+academic_features:
+  mathjax: true
+  mermaid: true
+  plotly: true
+sass:
+  sass_dir: _sass
+  style: compressed
+og_image: portrait.svg
+
+paginate: 5
+paginate_path: /blog/page:num/

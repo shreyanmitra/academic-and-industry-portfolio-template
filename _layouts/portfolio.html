@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js" data-theme="{{ site.appearance.default | default: 'dark' }}" data-palette="{{ site.site_theme | default: 'default' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include seo.html %}
+  <script src="{{ '/assets/js/site-theme.js' | relative_url }}"></script>
+  <meta name="theme-color" content="#070a12">
+  <link rel="icon" href="{{ '/images/favicon.svg' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  {% comment %}Leaflet first so the site stylesheet wins where the two overlap.{% endcomment %}
+  {% if page.talkmap %}<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ '/assets/css/portfolio-themes.css' | relative_url }}">
+  <script>
+    /* Arm entrance motion before first paint so revealed content never flashes.
+       Content is only hidden while a working observer is guaranteed to release it. */
+    (function () {
+      var el = document.documentElement;
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      el.classList.add('motion');
+      addEventListener('load', function () {
+        setTimeout(function () {
+          if (el.classList.contains('reveals-armed')) return;
+          document.querySelectorAll('.reveal, .splat').forEach(function (node) { node.classList.add('revealed'); });
+        }, 1200);
+      });
+    })();
+  </script>
+  <script src="{{ '/assets/js/portfolio.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include portfolio-nav.html %}
+  <main id="main" tabindex="-1">{% if site.data.portfolio.demo %}<aside class="template-notice container">Portfolio template · Fictional sample content. Personalize the configuration before publishing.</aside>{% endif %}{{ content }}</main>
+  <footer class="site-footer"><div class="container">
+    <div class="footer-primary"><p>© {{ site.time | date: '%Y' }} · {{ site.author.name | escape }} · {{ site.data.portfolio.footer_note | escape }}</p>{% if site.data.portfolio_ui.last_updated %}<p>Last updated <time datetime="{{ site.data.portfolio_ui.last_updated | date: '%Y-%m-%d' }}">{{ site.data.portfolio_ui.last_updated | date: '%B %Y' }}</time></p>{% endif %}</div>
+    <nav class="footer-links" aria-label="Footer"><a href="{{ '/sitemap/' | relative_url }}">Sitemap</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a><a href="{{ '/year-archive/' | relative_url }}">Blog</a><a href="{{ '/cv/' | relative_url }}">CV</a><a href="{{ '/markdown/' | relative_url }}">Guide</a><a href="{{ '/portfolio/' | relative_url }}">Classic portfolio</a><a href="#main">Back to top {% include portfolio-icon.html name='up' %}</a></nav>
+  </div></footer>
+  {% if page.talkmap %}<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="{{ '/assets/js/talkmap.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
+
+  {% include academic-features.html %}
+  {% include analytics.html %}
+  {% if site.comments.provider == 'staticman' and page.comments %}<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>{% endif %}
+  {% include comments-providers/scripts.html %}
+</body>
+</html>

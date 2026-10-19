@@ -1,0 +1,12 @@
+---
+layout: portfolio-archive
+title: "Talks and presentations"
+permalink: /talks/
+section: talks
+display_title: "Presentations &amp; <em>Talks</em>"
+subtitle: "Fictional presentations showing the available formats."
+talkmap: false # enable after adding coordinates; loads Leaflet and Esri tiles
+---
+<section class="container archive-content"><div class="prose">{% capture notes %}{% include portfolio-talk-notes.html %}{% endcapture %}{{ notes | markdownify }}</div>
+{% assign talks = site.talks | sort: 'date' | reverse %}{% assign last_year = '' %}{% for item in talks %}{% assign year = item.date | date: '%Y' %}{% unless year == last_year %}<h2 class="group-label">{{ year }}</h2>{% assign last_year = year %}{% endunless %}{% include portfolio-row.html item=item full=true %}{% else %}{% include portfolio-empty.html %}{% endfor %}</section>
+{% if page.talkmap %}{% include portfolio-talkmap.html %}{% endif %}

@@ -1,0 +1,13 @@
+{%- assign talks_sorted = site.talks | sort: 'date' | reverse -%}
+{%- assign mapped_count = 0 -%}
+{%- for talk in talks_sorted -%}{%- if talk.latitude and talk.longitude -%}{%- assign mapped_count = mapped_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if mapped_count > 0 -%}
+<section class="section section-compact talkmap-section"><div class="container">
+  {% include portfolio-heading.html index='06.1' label='Talk map' title='Where I have <em>Spoken</em>' %}
+  <div class="talkmap-frame reveal">
+    <div id="talk-map"></div>
+    <p class="talkmap-fallback">{% assign shown = 0 %}{% for talk in talks_sorted %}{% if talk.latitude and talk.longitude %}{% if shown > 0 %} · {% endif %}{{ talk.location }}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}</p>
+  </div>
+  <script type="application/json" id="talk-map-data">[{% assign written = 0 %}{% for talk in talks_sorted %}{% if talk.latitude and talk.longitude %}{% if written > 0 %},{% endif %}{"lat":{{ talk.latitude }},"lng":{{ talk.longitude }},"title":{{ talk.title | jsonify }},"venue":{{ talk.venue | jsonify }},"location":{{ talk.location | jsonify }},"url":{{ talk.url | relative_url | jsonify }},"date":{{ talk.date | date: '%b %Y' | jsonify }}}{% assign written = written | plus: 1 %}{% endif %}{% endfor %}]</script>
+</div></section>
+{%- endif -%}

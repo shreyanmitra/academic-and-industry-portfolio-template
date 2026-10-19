@@ -1,0 +1,1 @@
+{% assign minutes = content | strip_html | number_of_words | divided_by: site.words_per_minute %}{% if minutes < 1 %}Less than a minute{% else %}{{ minutes }} min read{% endif %}

@@ -1,0 +1,11 @@
+{% assign share_url = page.url | absolute_url | url_encode %}
+<section class="detail-sharing" aria-label="Share this page">
+  <span class="eyebrow">Share this page</span>
+  <div class="resource-links">
+    <a href="https://bsky.app/intent/compose?text={{ share_url }}">Bluesky</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}">Facebook</a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ share_url }}">LinkedIn</a>
+    <a href="https://www.addtoany.com/add_to/mastodon?linkurl={{ share_url }}">Mastodon</a>
+    <a href="https://x.com/intent/post?text={{ share_url }}">X (formerly Twitter)</a>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" aria-label="Blog pages"><ul>
+{% if paginator.previous_page %}<li><a href="{{ paginator.previous_page_path | relative_url }}">Previous</a></li>{% endif %}
+{% for number in (1..paginator.total_pages) %}<li>{% if number == paginator.page %}<span aria-current="page">{{ number }}</span>{% elsif number == 1 %}<a href="{{ '/blog/' | relative_url }}">1</a>{% else %}{% assign path = site.paginate_path | replace: ':num', number %}<a href="{{ path | relative_url }}">{{ number }}</a>{% endif %}</li>{% endfor %}
+{% if paginator.next_page %}<li><a href="{{ paginator.next_page_path | relative_url }}">Next</a></li>{% endif %}
+</ul></nav>
+{% endif %}

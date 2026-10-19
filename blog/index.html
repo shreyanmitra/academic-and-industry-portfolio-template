@@ -1,0 +1,7 @@
+---
+layout: archive
+title: Blog
+---
+{% assign entries = paginator.posts | default: site.posts %}
+{% for post in entries %}{% include archive-single.html %}{% else %}<p>No posts yet.</p>{% endfor %}
+{% include paginator.html %}

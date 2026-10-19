@@ -1,0 +1,3 @@
+<p>Explore the site, or use the <a href="{{ '/sitemap.xml' | relative_url }}">XML sitemap</a>.</p>
+<h2>Pages</h2><ul>{% for entry in site.pages %}{% if entry.title and entry.sitemap != false %}<li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></li>{% endif %}{% endfor %}</ul>
+{% for collection in site.collections %}{% if collection.output and collection.docs.size > 0 %}<h2>{{ collection.label | capitalize }}</h2><ul>{% for entry in collection.docs %}<li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></li>{% endfor %}</ul>{% endif %}{% endfor %}

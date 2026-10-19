@@ -1,0 +1,9 @@
+<div class="social-links">
+  {% if site.author.email and site.author.email != '' %}<a href="mailto:{{ site.author.email | escape }}">{% include portfolio-icon.html name='email' %} Email</a>{% endif %}
+  {% if site.author.googlescholar and site.author.googlescholar != '' %}<a href="{{ site.author.googlescholar | escape }}">{% include portfolio-icon.html name='scholar' %} Scholar</a>{% endif %}
+  {% if site.author.github and site.author.github != '' %}<a href="https://github.com/{{ site.author.github | escape }}">{% include portfolio-icon.html name='github' %} GitHub</a>{% endif %}
+  {% if site.author.linkedin and site.author.linkedin != '' %}<a href="{{ site.author.linkedin | escape }}">{% include portfolio-icon.html name='linkedin' %} LinkedIn</a>{% endif %}
+  {% if site.author.arxiv and site.author.arxiv != '' %}<a href="{{ site.author.arxiv | escape }}">{% include portfolio-icon.html name='arxiv' %} arXiv</a>{% endif %}
+  {% if site.author.orcid and site.author.orcid != '' %}<a href="{{ site.author.orcid | escape }}">{% include portfolio-icon.html name='orcid' %} ORCID</a>{% endif %}
+  {% if include.download and site.data.portfolio.cv_url and site.data.portfolio.cv_url != '' %}<a class="social-download" href="{% include portfolio-resource-url.html url=site.data.portfolio.cv_url %}">{% include portfolio-icon.html name='download' %} Download CV</a>{% endif %}
+</div>

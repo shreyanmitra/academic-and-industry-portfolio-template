@@ -1,0 +1,27 @@
+/* Additional modes preserve the redesigned default dark appearance. */
+.theme-toggle { display:inline-grid;place-items:center;flex-shrink:0;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:12px;background:var(--glass);color:var(--fg);cursor:pointer; }
+.theme-toggle:hover { background:var(--glass-strong); }
+.theme-toggle:focus-visible { outline:2px solid var(--accent-bright);outline-offset:3px; }
+.nav-inner { gap:12px; }
+:root[data-theme="light"] {
+  color-scheme:light;--bg:#f8fafc;--bg-deep:#edf2f8;--fg:#172235;--muted:#44546a;--quiet:#52647c;
+  --surface:rgba(18,40,70,.035);--line:rgba(18,40,70,.14);--line-strong:rgba(18,40,70,.23);
+  --glass:rgba(255,255,255,.82);--glass-strong:rgba(225,234,246,.9);--accent-bright:#174fb5;
+}
+html[data-theme="light"] body { background:var(--bg);color:var(--fg); }
+html[data-theme="light"] body::before { background:radial-gradient(ellipse at 20% 0%,rgba(104,154,231,.15),transparent 65%); }
+html[data-theme="light"] .site-nav,html[data-theme="light"] .site-nav.scrolled { background:rgba(248,250,252,.95); }
+html[data-theme="light"] .work-card,html[data-theme="light"] .research-cell,html[data-theme="light"] .record-row,
+html[data-theme="light"] .legacy-panel,html[data-theme="light"] .detail-panel { background:var(--glass);color:var(--fg); }
+html[data-theme="light"] .site-footer,html[data-theme="light"] #primary-nav.open { background:var(--bg-deep); }
+html[data-theme="light"] .prose pre,html[data-theme="light"] .prose code { background:#e8eef6;color:#172235; }
+html[data-theme="light"] .skill-chip { color:var(--fg);background:#e5edf7; }
+html[data-theme="light"] .hero-description,html[data-theme="light"] .record-body p { color:var(--muted); }
+.academic-chart { min-height:320px;width:100%;overflow:hidden; }
+.academic-feature-error { color:var(--muted); }
+@media (max-width:900px) { .theme-toggle { margin-left:auto; } .menu-toggle { order:3; } }
+:root[data-palette="air"] { --accent:#0092ca;--accent-bright:#0092ca;--accent-glow:#0092ca55; }
+:root[data-palette="sunrise"] { --accent:#fc3a52;--accent-bright:#fc3a52;--accent-glow:#fc3a5255; }
+:root[data-palette="mint"] { --accent:#11999e;--accent-bright:#11999e;--accent-glow:#11999e55; }
+:root[data-palette="dirt"] { --accent:#343434;--accent-bright:#343434;--accent-glow:#34343455; }
+:root[data-palette="contrast"] { --accent:#b60000;--accent-bright:#b60000;--accent-glow:#b6000055; }

@@ -1,0 +1,19 @@
+<header class="site-nav nav-fade{% unless page.url == '/' %} scrolled{% endunless %}" data-nav>
+  <div class="container nav-inner">
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.author.name | escape }} home">{{ site.author.name | escape }}<span class="accent">.</span></a>
+    <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav id="primary-nav" aria-label="Primary">
+      {%- for link in site.data.navigation.main -%}
+        {%- assign active = false -%}
+        {%- if link.section and page.section == link.section -%}{%- assign active = true -%}{%- endif -%}
+        {%- if link.section and page.collection == link.section -%}{%- assign active = true -%}{%- endif -%}
+        {%- if link.divider -%}<span class="nav-divider" aria-hidden="true"></span>
+        {%- elsif link.style == 'button' -%}<a class="button button-outline nav-contact" href="{{ '/' | relative_url }}#{{ link.section }}">{{ link.title }} {% include portfolio-icon.html name='external' %}</a>
+        {%- elsif link.url -%}<a href="{{ link.url | relative_url }}"{% if active %} class="active" aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- else -%}<a href="{{ '/' | relative_url }}#{{ link.section }}" data-section="{{ link.section }}"{% if active %} class="active" aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    {% if site.appearance.toggle != false %}<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14a8 8 0 0 1-10-10A8 8 0 1 0 20 14Z" stroke="currentColor" stroke-width="1.5"/></svg></button>{% endif %}
+  </div>
+</header>

@@ -1,0 +1,6 @@
+.git
+_site*
+local
+/vendor
+node_modules
+.bundle

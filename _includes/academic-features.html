@@ -1,0 +1,4 @@
+{% if site.academic_features.mathjax != false or site.academic_features.mermaid != false or site.academic_features.plotly != false %}
+<script id="academic-feature-settings" type="application/json">{{ site.academic_features | jsonify }}</script>
+<script src="{{ '/assets/js/academic-features.js' | relative_url }}"{% unless include.classic %} defer{% endunless %}></script>
+{% endif %}

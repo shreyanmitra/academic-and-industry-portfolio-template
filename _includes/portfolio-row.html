@@ -1,0 +1,12 @@
+{% assign item = include.item %}
+{% assign row_icon = item.icon | default: item.header.teaser %}
+<article class="record-row record-{{ item.collection }} {% if include.full %}record-full splat{% else %}reveal{% endif %}{% if row_icon %} has-icon{% endif %}" data-category="{{ item.portfolio_category | escape }}" style="--order:{{ include.index | default: 0 }}">
+  <div class="record-meta"><span class="badge badge-{{ item.portfolio_category | slugify }}">{{ item.portfolio_category | default: item.type | default: 'Research' }}</span><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%b %Y' }}</time>{% if include.full %}<span>{{ item.location }}</span>{% if item.award %}<span class="badge badge-award">{{ item.award | escape }}</span>{% endif %}{% endif %}</div>
+  {% if row_icon %}<span class="record-icon card-icon"><img src="{% include portfolio-image-url.html src=row_icon %}" alt="" width="40" height="40" loading="lazy" decoding="async"></span>{% endif %}
+  {% assign heading_tag = include.heading | default: 'h3' %}
+  <div class="record-body"><{{ heading_tag }}><a href="{{ item.url | relative_url }}">{{ item.title }}</a></{{ heading_tag }}>{% if item.venue %}<p class="record-venue">{{ item.venue }}</p>{% endif %}
+    {% if item.citation and item.collection == 'publications' %}<p class="citation">{{ item.citation }}</p>{% endif %}
+    {% if include.full %}<div class="prose record-content">{{ item.content | markdownify }}</div>{% elsif item.summary %}<p>{{ item.summary }}</p>{% endif %}
+    <div class="resource-links"><a href="{{ item.url | relative_url }}">{% if include.full %}Permalink{% else %}Full details{% endif %} →</a>{% if item.paperurl %}<a href="{% include portfolio-resource-url.html url=item.paperurl %}">Paper ↗</a>{% endif %}{% if item.codeurl %}<a href="{% include portfolio-resource-url.html url=item.codeurl %}">Code ↗</a>{% endif %}{% if item.videourl %}<a href="{% include portfolio-resource-url.html url=item.videourl %}">Watch video ↗</a>{% endif %}</div>
+  </div><span class="record-arrow" aria-hidden="true">{% include portfolio-icon.html name='external' %}</span>
+</article>

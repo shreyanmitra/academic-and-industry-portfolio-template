@@ -1,0 +1,30 @@
+# Reusable homepage copy. Text is plain text unless documented otherwise.
+demo: true # turn off after replacing the fictional examples
+role: "Researcher · Software developer"
+hero_description: "Build a home for your research, projects, and the ideas behind them."
+topics: "Research · Software · Community"
+affiliations:
+  - name: "Your organization"
+    url: "" # optional
+portrait:
+  image: "/images/portrait.svg"
+  alt: "Placeholder portrait; replace with your own image"
+  video: "" # optional WebM path; leave blank for a still portrait
+  animated_image: "" # optional animated WebP fallback
+research_intro: "Introduce the questions that guide your work and the people you hope it will help."
+research_areas:
+  - title: "Reliable systems"
+    description: "Describe one of your research interests and why it matters."
+  - title: "Useful tools"
+    description: "Show how your work becomes something people can use."
+  - title: "Accessible knowledge"
+    description: "Explain how you share ideas, results, and practical lessons."
+  - title: "Open collaboration"
+    description: "Outline the kinds of questions you like to explore with others."
+teaching_intro: "Share your teaching, mentoring, and learning experiences."
+contact_intro: "Describe the collaborations, questions, or opportunities you welcome."
+cv_url: "" # site-root path such as /files/cv.pdf, or a complete https URL
+footer_note: "Built with care"
+awards:
+  - "Example award — replace with your own or remove"
+research_affiliations: [] # each entry: {name: "Lab name", url: "https://example.org"}

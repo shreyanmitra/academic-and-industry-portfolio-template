@@ -1,0 +1,8 @@
+{%- comment -%}
+Resolves an image reference to a URL. Accepts an absolute URL, a site-root path
+such as /files/logo.png, or a bare filename, which follows the Academic Pages
+convention of resolving against /images/.
+{%- endcomment -%}
+{%- assign src = include.src | strip -%}
+{%- assign lead = src | slice: 0, 1 -%}
+{%- if src contains '://' -%}{{ src }}{%- elsif lead == '/' -%}{{ src | relative_url }}{%- else -%}{{ src | prepend: '/images/' | relative_url }}{%- endif -%}

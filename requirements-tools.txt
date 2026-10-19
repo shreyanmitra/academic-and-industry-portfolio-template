@@ -1,0 +1,9 @@
+pandas>=2,<3
+bibtexparser>=1.4,<2
+PyYAML>=6,<7
+geopy>=2,<3
+requests>=2,<3
+python-frontmatter>=1,<2
+getorg>=0.3
+pybtex>=0.24,<1
+jupyter>=1,<2

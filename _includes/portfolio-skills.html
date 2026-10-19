@@ -1,0 +1,10 @@
+<section class="section section-compact" id="skills"><div class="container">
+  {% include portfolio-heading.html index='03.1' label='Skills & tools' title='Skill <em>Cloud</em>' %}
+  {% assign skill_total = 0 %}{% for group in site.data.portfolio_skills.groups %}{% assign skill_total = skill_total | plus: group.skills.size %}{% endfor %}
+  <p class="section-intro skills-intro">Explore skills and tools by area. Project-specific tags appear on the project cards above.</p>
+  <div class="filters" role="group" aria-label="Filter skills by area" data-filter-group="skill-cloud" data-status="skill-count" data-item-label="skill" hidden><button type="button" data-filter="All" aria-pressed="true">All</button>{% for group in site.data.portfolio_skills.groups %}<button type="button" data-filter="{{ group.name | escape }}" aria-pressed="false">{{ group.name }}</button>{% endfor %}</div>
+  <p id="skill-count" class="filter-status" role="status" aria-live="polite">{{ skill_total }} skills shown</p>
+  <ul class="skill-cloud" id="skill-cloud">{% for group in site.data.portfolio_skills.groups %}{% for skill in group.skills %}<li class="skill-chip" data-category="{{ group.name | escape }}" title="{{ group.name | escape }}"><span class="skill-name">{{ skill }}</span></li>{% endfor %}{% endfor %}</ul>
+  <p class="skills-note">Drawn from projects and experience. Chip size is decorative, not a proficiency rating.</p>
+  <div class="two-col skills-supplement"><div><span class="eyebrow">Languages</span><div class="tags">{% for language in site.data.portfolio_skills.languages %}<span class="tag">{{ language }}</span>{% endfor %}</div></div><div><span class="eyebrow">Degrees · Completed or in progress</span><div class="tags">{% for degree in site.data.portfolio_skills.degrees %}<span class="tag">{{ degree }}</span>{% endfor %}</div></div></div>
+</div></section>

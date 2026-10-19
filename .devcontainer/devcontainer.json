@@ -1,0 +1,10 @@
+{
+  "name": "Portfolio Template",
+  "dockerComposeFile": "../docker-compose.yaml",
+  "service": "site",
+  "workspaceFolder": "/site",
+  "forwardPorts": [
+    4000
+  ],
+  "overrideCommand": false
+}

@@ -1,0 +1,12 @@
+_site*/
+.bundle/
+/vendor/
+.sass-cache/
+.jekyll-cache/
+node_modules/
+local/
+.DS_Store
+.portfolio-studio-data/
+
+__pycache__/
+*.pyc

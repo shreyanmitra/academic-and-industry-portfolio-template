@@ -1,0 +1,37 @@
+name: Validate template
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Check source contract
+        run: bundle exec ruby tests/source_contract.rb
+      - name: Check root deployment
+        run: |
+          bundle exec jekyll build --destination _site-root
+          bundle exec ruby scripts/verify.rb _site-root
+      - name: Check project deployment
+        run: |
+          bundle exec jekyll build --baseurl /academic-and-industry-portfolio-template --destination _site-project
+          bundle exec ruby scripts/verify.rb _site-project /academic-and-industry-portfolio-template
+      - name: Check empty and optional content
+        run: bundle exec ruby tests/edge_cases.rb
+
+      - name: Check inherited functionality
+        run: bundle exec ruby tests/inherited.rb
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install optional BibTeX parser
+        run: python -m pip install "pybtex>=0.24,<1"
+      - name: Check content generators
+        run: python -m unittest discover -s tests -p 'test_*.py'

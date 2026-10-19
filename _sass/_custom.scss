@@ -1,0 +1,53 @@
+/* Portfolio-specific compatibility rules layered over AcademicPages v0.9. */
+
+.archive__item-card {
+  box-sizing: border-box;
+  min-width: 0;
+  margin-bottom: 25px;
+  padding: 8px 20px 20px;
+  color: var(--global-text-color);
+  background: var(--global-bg-color);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .archive__item-card {
+  border: 1px solid var(--global-border-color);
+}
+
+/* Older authored cards contain fixed inline widths. Keep their appearance while
+   allowing them to fit phones and enlarged-text layouts. */
+.page__content [style*="min-width:600px"],
+.page__content [style*="min-width: 600px"],
+.archive [style*="min-width:600px"],
+.archive [style*="min-width: 600px"] {
+  box-sizing: border-box;
+  min-width: 0 !important;
+  max-width: 100%;
+  color: var(--global-text-color);
+  background-color: var(--global-bg-color) !important;
+}
+
+.page__content iframe,
+.page__content embed,
+.page__content object,
+.archive iframe,
+.archive embed,
+.archive object {
+  max-width: 100%;
+}
+
+.archive object[type="application/pdf"] {
+  height: auto;
+  aspect-ratio: 7 / 9;
+}
+
+.page__content iframe[src*="talkmap"] {
+  width: 100%;
+}
+
+/* Inherited entrance effects must respect the reader's reduced-motion setting. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important;animation-delay:0ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important; }
+}
