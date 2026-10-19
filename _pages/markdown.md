@@ -4,7 +4,7 @@ title: "Writing and visualization guide"
 permalink: /markdown/
 redirect_from: [/md/, /markdown.html]
 ---
-This page exercises the restored academic writing features. MathJax, Mermaid, and Plotly load on pages that use them. Their source remains readable when JavaScript is disabled.
+Write equations, diagrams, and interactive charts directly in your Markdown pages. MathJax, Mermaid, and Plotly load on pages that use them. Their source remains readable when JavaScript is disabled.
 
 ## Mathematics
 

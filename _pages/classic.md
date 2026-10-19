@@ -7,7 +7,7 @@ read_time: true
 share: true
 comments: true
 ---
-This neutral page verifies the inherited sidebar, navigation, fonts, icons, and light/dark palettes. [Return to the redesigned homepage]({{ '/' | relative_url }}).
+Use the classic Academic Pages layout for articles with an author sidebar, a table of contents, and light/dark styling. [Return to the redesigned homepage]({{ '/' | relative_url }}).
 
 ## Contents
 

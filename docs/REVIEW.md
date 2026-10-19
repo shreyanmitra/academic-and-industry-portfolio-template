@@ -1,35 +1,47 @@
-# Template review — 2026-10-19
+# Validation and contributor checks
 
-Public repository name: `academic-and-industry-portfolio-template`.
-Display name: **Academic and Industry Portfolio Template**.
-The engine is included directly in the independent template repository.
+Run these checks before submitting engine changes or deploying a customized site. The validation workflow runs source, rendered-site, edge-case, inherited-feature, and content-generator checks on pushes and pull requests.
 
-## Review outcome
+## Site builds
 
-The local starter is ready for the GitHub publication stage. This review did not create a remote repository, enable GitHub settings, or deploy a site.
+Install the dependencies with `bundle install`, then run:
 
-Reviewed the default desktop/mobile design, neutral sample content, setup and editing instructions, inherited feature matrix, and release packaging. The redesigned homepage remains the default; classic Academic Pages layouts and academic writing tools remain available.
+```sh
+bundle exec ruby tests/source_contract.rb
+bundle exec jekyll build --destination _site-root
+bundle exec ruby scripts/verify.rb _site-root
+bundle exec jekyll build --baseurl /academic-and-industry-portfolio-template --destination _site-project
+bundle exec ruby scripts/verify.rb _site-project /academic-and-industry-portfolio-template
+bundle exec ruby tests/edge_cases.rb
+bundle exec ruby tests/inherited.rb
+```
 
-Changes from this review:
+The rendered checks cover local links, anchors, images, metadata, heading structure, base paths, and development-file exclusions. Edge-case fixtures cover empty collections and optional content. Inherited-feature fixtures exercise palettes, pagination, CVs, feeds, and integration hooks. These checks do not validate external URLs or live service accounts.
 
-- Applied the chosen public name to the README, package metadata, project-path validation, and browser checks.
-- Expanded the personalization checklist to cover original portfolio entries, posts, drafts, and JSON CV examples.
-- Made Plotly chart backgrounds and text follow light/dark switching while respecting explicit author colors.
-- Corrected import-test file decoding to use UTF-8 consistently on Windows.
+## Browser checks
 
-## Verified locally
+After building both output directories above:
 
-- Source contract: 30 sample pages and collection records.
-- Root and proposed project-path builds: 36 HTML pages and 2,545 rendered conditions each.
-- Edge cases: empty collections, missing portrait/CV, category-free roles, optional coordinate map.
-- Inherited functionality: six palettes, pagination, sidebar, CV/feed, analytics opt-out, custom integration hooks, and verification settings; fixture build checked 3,087 conditions across 43 pages.
-- Browser checks: desktop/mobile, root/project navigation, filters, no JavaScript, reduced motion, persistent themes, and actual MathJax/Mermaid/Plotly rendering, including chart theme changes.
-- Content tooling: all three CSV/TSV/BibTeX import tests passed.
-- Publishable-file scan: no personal identifiers or local machine paths; inherited vendor Sass is included.
-- Inspected desktop homepage, mobile light appearance, and rendered writing-guide screenshots.
+```sh
+npm install
+npx playwright install chromium
+npm run test:browser
+npm run test:features
+```
 
-## Remaining publication checks
+Set `PORTFOLIO_BROWSER_CHANNEL=msedge` to use installed Edge. The checks cover desktop/mobile navigation, filters, no-JavaScript access, reduced motion, themes, and visualization rendering. The feature check requires access to public MathJax, Mermaid, and Plotly CDNs. Screenshots are written under ignored `local/` directories.
 
-Create the separate public GitHub repository with the chosen name and enable **Template repository**. Run its GitHub Actions checks, then create a disposable site using **Use this template** and validate the hosted result before announcing a release.
+## Content import checks
 
-Docker/Dev Container execution and owner-configured external services remain unverified. Local builds do not establish that GitHub deployment settings are correct. These boundaries are also recorded in FEATURE-PARITY.md.
+```sh
+python -m pip install "pybtex>=0.24,<1"
+python -m unittest discover -s tests -p 'test_*.py'
+```
+
+The optional BibTeX test is skipped when pybtex is unavailable. Other generator tests use Python's standard library.
+
+## Before deploying
+
+Replace sample content, check contact and download links, review any enabled external services, and preview desktop/mobile layouts. Confirm that the GitHub Pages workflow succeeds and that navigation works at your hosted address. Docker and Dev Container changes should also be exercised with a working Docker engine.
+
+Build caches and local screenshots are ignored. Share source files through Git rather than uploading the entire working directory; generated caches can contain local filesystem paths.

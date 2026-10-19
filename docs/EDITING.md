@@ -18,7 +18,7 @@ The template is a normal Jekyll repository with its engine included. A site crea
 | Colors and visual styling | `assets/css/portfolio.css` |
 | Shared page shell | `_layouts/portfolio.html` |
 
-Portfolio Studio is optional and separate. It edits files locally; build the site with Jekyll to see the final result. Its lightweight preview does not evaluate Liquid. For data files not exposed in an older editor version, edit the file directly or update Studio. Keep the editor's `.portfolio-studio-data` history outside the public site repository.
+Edit Markdown, YAML, and JSON with your preferred text editor. Preview with Jekyll to render Liquid templates and confirm the final layout. If you use a separate content editor, keep its private history and backups outside the public site repository.
 
 ## Upgrading an existing portfolio
 
@@ -28,4 +28,4 @@ Do not replace an existing website wholesale. Work in a separate checkout, map i
 
 Replace all fictional examples, placeholder degrees/languages/awards, the portrait, and favicon as appropriate. Review contact destinations and optional external services. Disable the sample banner with `demo: false`, run the documented checks, and preview the result. Keep `LICENSE` and `NOTICE.md` in distributed source copies.
 
-The GitHub repository's **Template repository** setting is configured on GitHub, not in a source file. It can be enabled after the cleaned starter is published. This local starter does not create a remote repository or change any existing site's hosting.
+To distribute your own reusable starter, enable **Template repository** in its GitHub settings. To publish a site, select **GitHub Actions** in **Settings → Pages**.
